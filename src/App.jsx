@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Trash2 } from 'lucide-react'
 import { initialItems } from './data/initialItems'
+import { categoryNames } from './data/categories'
 import Item from './components/Item'
 import AddItemForm from './components/AddItemForm'
 import styles from './App.module.css'
@@ -92,7 +93,9 @@ function App() {
 
       {categories.map((category) => (
         <div key={category} className={styles.categoryGroup}>
-          <h2 className={styles.categoryTitle}>{category}</h2>
+          <h2 className={styles.categoryTitle}>
+            {categoryNames[category] || category}
+          </h2>
           <div className={styles.itemsList}>
             {items
               .filter((item) => item.category === category)

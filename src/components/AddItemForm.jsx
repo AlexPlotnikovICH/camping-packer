@@ -1,15 +1,7 @@
 import { useState } from 'react'
 import { Plus } from 'lucide-react'
+import { categoryNames } from '../data/categories'
 import styles from './AddItemForm.module.css'
-
-const CATEGORIES = [
-  'Shelter',
-  'Kitchen',
-  'Clothing',
-  'Hygiene',
-  'Electronics',
-  'Other',
-]
 
 function AddItemForm({ onAdd }) {
   const [name, setName] = useState('')
@@ -35,7 +27,7 @@ function AddItemForm({ onAdd }) {
     <form className={styles.form} onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Название"
+        placeholder="Название (например, Топор)"
         value={name}
         onChange={(e) => setName(e.target.value)}
         className={styles.input}
@@ -55,9 +47,9 @@ function AddItemForm({ onAdd }) {
           className={styles.select}
           style={{ flex: 1 }}
         >
-          {CATEGORIES.map((cat) => (
-            <option key={cat} value={cat}>
-              {cat}
+          {Object.entries(categoryNames).map(([key, label]) => (
+            <option key={key} value={key}>
+              {label}
             </option>
           ))}
         </select>
