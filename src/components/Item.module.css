@@ -54,3 +54,29 @@
 .packed .weight {
   opacity: 0.5;
 }
+
+.deleteButton {
+  background: none;
+  border: none;
+  color: #ff5252;
+  cursor: pointer;
+  padding: 12px; /* Increased touch target */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.3; /* Always visible but subtle */
+  transition: opacity 0.2s, background-color 0.2s;
+  border-radius: 50%;
+  margin-left: 4px;
+}
+
+.deleteButton:hover,
+.deleteButton:active,
+.deleteButton:focus {
+  opacity: 1;
+  background-color: #ffebee;
+}
+
+.item:hover .deleteButton {
+  opacity: 1;
+}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Trash2 } from 'lucide-react'
 import { initialItems } from './data/initialItems'
 import Item from './components/Item'
+import AddItemForm from './components/AddItemForm'
 import styles from './App.module.css'
 import './App.css'
 
@@ -24,6 +25,21 @@ function App() {
         item.id === id ? { ...item, isPacked: !item.isPacked } : item
       )
     )
+  }
+
+  const handleAddItem = (newItem) => {
+    const item = {
+      ...newItem,
+      id: Date.now().toString(),
+      isPacked: false,
+    }
+    setItems((prev) => [item, ...prev])
+  }
+
+  const handleDeleteItem = (id) => {
+    if (window.confirm('Удалить этот предмет?')) {
+      setItems((prev) => prev.filter((item) => item.id !== id))
+    }
   }
 
   const handleReset = () => {
@@ -72,6 +88,8 @@ function App() {
         </div>
       </header>
 
+      <AddItemForm onAdd={handleAddItem} />
+
       {categories.map((category) => (
         <div key={category} className={styles.categoryGroup}>
           <h2 className={styles.categoryTitle}>{category}</h2>
@@ -79,7 +97,12 @@ function App() {
             {items
               .filter((item) => item.category === category)
               .map((item) => (
-                <Item key={item.id} item={item} onToggle={handleToggleItem} />
+                <Item
+                  key={item.id}
+                  item={item}
+                  onToggle={handleToggleItem}
+                  onDelete={handleDeleteItem}
+                />
               ))}
           </div>
         </div>

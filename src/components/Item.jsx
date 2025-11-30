@@ -1,7 +1,7 @@
-import { CheckCircle, Circle } from 'lucide-react'
+import { CheckCircle, Circle, X } from 'lucide-react'
 import styles from './Item.module.css'
 
-function Item({ item, onToggle }) {
+function Item({ item, onToggle, onDelete }) {
   const formatWeight = (weight) => {
     if (weight >= 1000) {
       return `${(weight / 1000).toFixed(1)} кг`
@@ -23,6 +23,15 @@ function Item({ item, onToggle }) {
         <span className={styles.name}>{item.name}</span>
         <span className={styles.weight}>{formatWeight(item.weight)}</span>
       </div>
+      <button
+        className={styles.deleteButton}
+        onClick={(e) => {
+          e.stopPropagation()
+          onDelete(item.id)
+        }}
+      >
+        <X size={18} />
+      </button>
     </div>
   )
 }
