@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
+import { Trash2 } from 'lucide-react'
 import { initialItems } from './data/initialItems'
 import Item from './components/Item'
+import styles from './App.module.css'
 import './App.css'
 
 function App() {
@@ -50,86 +52,30 @@ function App() {
     totalWeight > 0 ? (packedWeight / totalWeight) * 100 : 0
 
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
-      <header style={{ marginBottom: '20px' }}>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginBottom: '10px',
-          }}
-        >
-          <h1>Camping Packer</h1>
-          <div
-            style={{
-              fontSize: '16px',
-              fontWeight: 'bold',
-              backgroundColor: '#e3f2fd',
-              padding: '8px 12px',
-              borderRadius: '8px',
-              color: '#1565c0',
-            }}
-          >
-            Рюкзак: {formatWeight(packedWeight)} / {formatWeight(totalWeight)}
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <div className={styles.headerTop}>
+          <h1 className={styles.title}>Camping Packer</h1>
+          <div className={styles.stats}>
+            {formatWeight(packedWeight)} / {formatWeight(totalWeight)}
           </div>
         </div>
-        <div
-          style={{
-            height: '10px',
-            backgroundColor: '#eee',
-            borderRadius: '5px',
-            overflow: 'hidden',
-          }}
-        >
+        <div className={styles.progressContainer}>
           <div
+            className={styles.progressBar}
             style={{
-              height: '100%',
               width: `${progressPercentage}%`,
-              backgroundColor: '#4caf50',
-              transition: 'width 0.3s ease-in-out',
+              backgroundColor:
+                progressPercentage === 100 ? '#4caf50' : '#2196f3',
             }}
           />
-        </div>
-        <div style={{ marginTop: '10px', textAlign: 'right' }}>
-          <button
-            onClick={handleReset}
-            style={{
-              padding: '8px 16px',
-              backgroundColor: '#ff5252',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              fontSize: '14px',
-            }}
-          >
-            Сбросить
-          </button>
         </div>
       </header>
 
       {categories.map((category) => (
-        <div key={category} style={{ marginBottom: '24px' }}>
-          <h2
-            style={{
-              fontSize: '20px',
-              borderBottom: '2px solid #eee',
-              paddingBottom: '8px',
-              marginBottom: '12px',
-              color: '#444',
-            }}
-          >
-            {category}
-          </h2>
-          <div
-            style={{
-              backgroundColor: 'white',
-              borderRadius: '8px',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-              border: '1px solid #eee',
-            }}
-          >
+        <div key={category} className={styles.categoryGroup}>
+          <h2 className={styles.categoryTitle}>{category}</h2>
+          <div className={styles.itemsList}>
             {items
               .filter((item) => item.category === category)
               .map((item) => (
@@ -138,6 +84,13 @@ function App() {
           </div>
         </div>
       ))}
+
+      <div className={styles.resetButtonContainer}>
+        <button onClick={handleReset} className={styles.resetButton}>
+          <Trash2 size={20} />
+          Разобрать рюкзак
+        </button>
+      </div>
     </div>
   )
 }

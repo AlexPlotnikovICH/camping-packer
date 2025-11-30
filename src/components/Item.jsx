@@ -1,3 +1,4 @@
+import { CheckCircle, Circle } from 'lucide-react'
 import styles from './Item.module.css'
 
 function Item({ item, onToggle }) {
@@ -9,13 +10,15 @@ function Item({ item, onToggle }) {
   }
 
   return (
-    <div className={`${styles.item} ${item.isPacked ? styles.packed : ''}`}>
-      <input
-        type="checkbox"
-        checked={item.isPacked}
-        onChange={() => onToggle(item.id)}
-        className={styles.checkbox}
-      />
+    <div
+      className={`${styles.item} ${item.isPacked ? styles.packed : ''}`}
+      onClick={() => onToggle(item.id)}
+    >
+      {item.isPacked ? (
+        <CheckCircle className={styles.iconChecked} size={24} />
+      ) : (
+        <Circle className={styles.icon} size={24} />
+      )}
       <div className={styles.content}>
         <span className={styles.name}>{item.name}</span>
         <span className={styles.weight}>{formatWeight(item.weight)}</span>
