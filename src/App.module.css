@@ -2,14 +2,11 @@
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f5f7fa;
-  min-height: 100vh;
 }
 
 .header {
   position: sticky;
   top: 0;
-  background-color: #f5f7fa; /* Match bg to cover content behind */
   padding-top: 10px;
   padding-bottom: 20px;
   z-index: 100;
@@ -25,54 +22,10 @@
 .title {
   font-size: 24px;
   font-weight: 800;
-  color: #2c3e50;
   margin: 0;
 }
 
-.stats {
-  font-size: 15px;
-  font-weight: 600;
-  background-color: #e3f2fd;
-  padding: 8px 12px;
-  border-radius: 8px;
-  color: #1565c0;
-}
-
-.progressContainer {
-  height: 12px;
-  background-color: #e0e0e0;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.progressBar {
-  height: 100%;
-  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 0.3s ease;
-}
-
-.categoryGroup {
-  margin-bottom: 24px;
-}
-
-.categoryTitle {
-  font-size: 18px;
-  font-weight: 700;
-  color: #34495e;
-  margin-bottom: 12px;
-  margin-top: 12px;
-  padding-left: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.itemsList {
-  background-color: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
-    0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  overflow: hidden;
-}
+/* .itemsList, .progressContainer, .progressBar styles removed and moved to Tailwind */
 
 .resetButtonContainer {
   margin-top: 40px;

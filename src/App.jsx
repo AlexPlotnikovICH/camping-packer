@@ -4,6 +4,7 @@ import { initialItems } from './data/initialItems'
 import { categoryNames } from './data/categories'
 import Item from './components/Item'
 import AddItemForm from './components/AddItemForm'
+import { ThemeToggle } from './components/ThemeToggle'
 import styles from './App.module.css'
 import './App.css'
 
@@ -69,21 +70,30 @@ function App() {
     totalWeight > 0 ? (packedWeight / totalWeight) * 100 : 0
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <div className={styles.headerTop}>
-          <h1 className={styles.title}>Camping Packer</h1>
-          <div className={styles.stats}>
-            {formatWeight(packedWeight)} / {formatWeight(totalWeight)}
+    <div
+      className={`${styles.container} min-h-screen transition-colors duration-300 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 relative`}
+    >
+      <header
+        className={`${styles.header} bg-slate-50/90 backdrop-blur-sm dark:bg-slate-950/90 dark:text-white transition-colors duration-300 pt-4 pb-6`}
+      >
+        <div className="flex items-center justify-between mb-4">
+          <h1 className={`${styles.title} text-slate-900 dark:text-slate-100`}>
+            Camping Packer
+          </h1>
+          <div className="flex items-center gap-4">
+            <div className="px-4 py-1.5 rounded-full text-sm font-semibold shadow-sm bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-200 transition-colors">
+              {formatWeight(packedWeight)} / {formatWeight(totalWeight)}
+            </div>
+            <ThemeToggle />
           </div>
         </div>
-        <div className={styles.progressContainer}>
+        <div className="h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden transition-colors">
           <div
-            className={styles.progressBar}
+            className="h-full transition-all duration-500 ease-out rounded-full"
             style={{
               width: `${progressPercentage}%`,
               backgroundColor:
-                progressPercentage === 100 ? '#4caf50' : '#2196f3',
+                progressPercentage === 100 ? '#10b981' : '#3b82f6',
             }}
           />
         </div>
@@ -93,10 +103,10 @@ function App() {
 
       {categories.map((category) => (
         <div key={category} className={styles.categoryGroup}>
-          <h2 className={styles.categoryTitle}>
+          <h2 className="text-lg font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 mt-8 ml-1">
             {categoryNames[category] || category}
           </h2>
-          <div className={styles.itemsList}>
+          <div className="flex flex-col gap-3">
             {items
               .filter((item) => item.category === category)
               .map((item) => (

@@ -11,20 +11,34 @@ function Item({ item, onToggle, onDelete }) {
 
   return (
     <div
-      className={`${styles.item} ${item.isPacked ? styles.packed : ''}`}
+      className={`${styles.item} flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer border border-transparent dark:border-slate-700/50`}
       onClick={() => onToggle(item.id)}
     >
       {item.isPacked ? (
-        <CheckCircle className={styles.iconChecked} size={24} />
+        <CheckCircle
+          className={`${styles.iconChecked} text-emerald-500`}
+          size={24}
+        />
       ) : (
-        <Circle className={styles.icon} size={24} />
+        <Circle
+          className={`${styles.icon} text-slate-300 dark:text-slate-600`}
+          size={24}
+        />
       )}
       <div className={styles.content}>
-        <span className={styles.name}>{item.name}</span>
-        <span className={styles.weight}>{formatWeight(item.weight)}</span>
+        <span
+          className={`${styles.name} text-slate-800 dark:text-slate-100 font-medium`}
+        >
+          {item.name}
+        </span>
+        <span
+          className={`${styles.weight} text-xs bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-600 dark:text-slate-300 font-medium`}
+        >
+          {formatWeight(item.weight)}
+        </span>
       </div>
       <button
-        className={styles.deleteButton}
+        className={`${styles.deleteButton} text-slate-400 dark:text-slate-500 hover:text-red-500 dark:hover:text-red-400 transition-colors`}
         onClick={(e) => {
           e.stopPropagation()
           onDelete(item.id)

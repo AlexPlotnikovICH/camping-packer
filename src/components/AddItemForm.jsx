@@ -24,13 +24,16 @@ function AddItemForm({ onAdd }) {
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form
+      className={`${styles.form} bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg dark:shadow-none mb-6 flex flex-col gap-4 transition-colors duration-300`}
+      onSubmit={handleSubmit}
+    >
       <input
         type="text"
         placeholder="Название (например, Топор)"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className={styles.input}
+        className={`${styles.input} w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 dark:bg-slate-900 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
       />
       <div className={styles.row}>
         <input
@@ -38,13 +41,13 @@ function AddItemForm({ onAdd }) {
           placeholder="Вес (г)"
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
-          className={styles.input}
+          className={`${styles.input} w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 dark:bg-slate-900 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
           style={{ flex: 1 }}
         />
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className={styles.select}
+          className={`${styles.select} w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 dark:bg-slate-900 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
           style={{ flex: 1 }}
         >
           {Object.entries(categoryNames).map(([key, label]) => (
@@ -54,7 +57,10 @@ function AddItemForm({ onAdd }) {
           ))}
         </select>
       </div>
-      <button type="submit" className={styles.addButton}>
+      <button
+        type="submit"
+        className={`${styles.addButton} flex items-center justify-center gap-2 py-3 px-6 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-xl transition-colors`}
+      >
         <Plus size={20} />
         Добавить
       </button>

@@ -13,7 +13,7 @@
 }
 
 .item:hover {
-  background-color: #f9f9f9;
+  /* background-color handled by Tailwind */
 }
 
 .icon {
@@ -35,13 +35,10 @@
 
 .name {
   font-size: 16px;
-  color: #333;
 }
 
 .weight {
   font-size: 14px;
-  color: #666;
-  background-color: #f0f0f0;
   padding: 4px 8px;
   border-radius: 12px;
 }
