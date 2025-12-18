@@ -1,4 +1,4 @@
-.container {
+/* .container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -23,37 +23,4 @@
   font-size: 24px;
   font-weight: 800;
   margin: 0;
-}
-
-/* .itemsList, .progressContainer, .progressBar styles removed and moved to Tailwind */
-
-.resetButtonContainer {
-  margin-top: 40px;
-  padding-bottom: 40px;
-  display: flex;
-  justify-content: center;
-}
-
-.resetButton {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 28px;
-  background-color: #fff;
-  color: #ff5252;
-  border: 2px solid #ff5252;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  transition: all 0.2s;
-}
-
-.resetButton:hover {
-  background-color: #ff5252;
-  color: white;
-}
-
-.resetButton:active {
-  transform: scale(0.98);
-}
+} */

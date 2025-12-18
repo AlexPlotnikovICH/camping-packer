@@ -57,12 +57,8 @@ function AddItemForm({ onAdd }) {
           ))}
         </select>
       </div>
-      <button
-        type="submit"
-        className={`${styles.addButton} flex items-center justify-center gap-2 py-3 px-6 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-xl transition-colors`}
-      >
-        <Plus size={20} />
-        Добавить
+      <button className="w-full !py-3.5 text-lg font-black text-white uppercase tracking-[0.2em] transition-all transform shadow-lg rounded-xl bg-action hover:bg-action-hover active:scale-95 hover:shadow-xl">
+        + Добавить
       </button>
     </form>
   )
